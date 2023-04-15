@@ -1,5 +1,6 @@
 {
-	"plugins": ["react-hot-loader/babel","@babel/plugin-proposal-class-properties","@babel/plugin-transform-react-jsx"], 
+	"plugins": ["react-hot-loader/babel","@babel/plugin-proposal-class-properties","@babel/plugin-transform-react-jsx"],
+	/* 
 	"presets":[
 		[
 			"@babel/env", 
@@ -10,7 +11,8 @@
 			}
 		], 
 		"@babel/preset-react",
-		"@babel/preset-flow"
-	] 
+		//"flow"
+	], 
+	*/
 	
 }

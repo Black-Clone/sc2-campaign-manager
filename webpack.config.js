@@ -1,9 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const SriPlugin = require('webpack-subresource-integrity');
-const crypto = require("crypto");
-const crypto_orig_createHash = crypto.createHash;
-crypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
 
 module.exports = {
 	entry: "./renderer.tsx",
@@ -19,8 +15,7 @@ module.exports = {
 			},
 			{ 
 				test: /\.tsx?$/, 
-				exclude: /(node_modules|bower_components)/,
-				loader: "ts-loader"
+				loader: "awesome-typescript-loader" 
 			},
 			
 			{
@@ -32,16 +27,14 @@ module.exports = {
 				use: [
 					"style-loader", 
 					"css-loader",
-					{
-						loader: 'sass-loader',
-						options: {
-						  sassOptions: {
-							includePaths: ['./node_modules'],
-						  },
-						},
-					  },
+					"sass-loader"
 				]
 			},
+			{ 
+				enforce: "pre", 
+				test: /\.js$/, 
+				loader: "source-map-loader" 
+			}
         ]
     },
 	resolve: { 
@@ -54,8 +47,7 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, "/dist/"),
 		publicPath: "./dist/",
-		filename: "../bundle.js",
-		crossOriginLoading: "anonymous"
+		filename: "../bundle.js"
 	},
 	devServer: {
 		contentBase: path.join(__dirname, "public/"),
@@ -63,11 +55,5 @@ module.exports = {
 		publicPath: "http://localhost:3000/dist/",
 		hotOnly: true
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-	    new SriPlugin({
-			hashFuncNames: ['sha256', 'sha384'],
-			enabled: true,
-		})
-	]
+	plugins: [new webpack.HotModuleReplacementPlugin()]
 };

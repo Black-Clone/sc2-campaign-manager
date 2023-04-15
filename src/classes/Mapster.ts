@@ -6,7 +6,7 @@ const conn = new mscrap.MapsterConnection();
 
 export const getCampaignFromMapster = async (projectId:string):Promise<ICampaign> => {
     const project = await conn.getProjectOverview(projectId);
-    const screenshots:IScreenshot[] = (await conn.getProjectImages(projectId)).images.map((img: { imageUrl: any; caption: string; }) =>({
+    const screenshots:IScreenshot[] = (await conn.getProjectImages(projectId)).images.map(img =>({
         src:img.imageUrl,
         description:h2m(img.caption)
     }));
