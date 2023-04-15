@@ -1,3 +1,4 @@
+require('update-electron-app')()
 const {app, BrowserWindow} = require('electron');
 const execFile = require('child_process').execFile;
 const { ipcMain } = require('electron');
@@ -49,7 +50,7 @@ function createWindow () {
 			nodeIntegration: true
 		}
 	});
-	loadDevTools();
+	//loadDevTools();
 	
 	mainWindow.loadFile('index.html');
 	/*mainWindow.webContents.openDevTools({
