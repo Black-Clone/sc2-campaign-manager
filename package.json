@@ -13,10 +13,9 @@
 			"target": "nsis"
 		},
 		"nsis": {
-			"oneClick":false,
-			"perMachine":false, 
-			"allowToChangeInstallationDirectory":true
-
+			"oneClick": false,
+			"perMachine": false,
+			"allowToChangeInstallationDirectory": true
 		}
 	},
 	"scripts": {
@@ -86,7 +85,7 @@
 		"immutability-helper": "^3.0.0",
 		"jquery": "^3.4.0",
 		"lodash": "^4.17.11",
-		"node-sass": "^4.11.0",
+		"node-sass": "^8.0.0",
 		"open-iconic": "^1.1.1",
 		"popper.js": "^1.15.0",
 		"rage-edit": "^1.2.0",
